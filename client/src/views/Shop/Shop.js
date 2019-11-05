@@ -13,12 +13,17 @@ class Shop extends React.Component {
     }
 
     render() {
-        const onSuccess = (payment) =>
+        const onSuccess = (payment) => {
             console.log('Successful payment!', payment);
+            alert('Transaction completed! Thank you for purchasing our product!')
+        };
         const onError = (error) =>
             console.log('Erroneous payment OR failed to load script!', error);
-        const onCancel = (data) =>
+        const onCancel = (data) => {
             console.log('Cancelled payment!', data);
+            alert('Payment Cancelled')
+        };
+
 
         let env = 'sandbox'; // you can set here to 'production' for production
         let currency = 'USD'; // or you can set this value from your props or state
