@@ -30,6 +30,10 @@ class Shop extends React.Component {
         let total = 9.95; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
 
         return (
+            <body>
+            <div>
+                <a href="http://localhost:3000/Home"><button className="homeButton"><span>Home </span></button></a>
+            </div>
             <div className="button">
                 <PaypalExpressBtn
                     env={env}
@@ -41,7 +45,11 @@ class Shop extends React.Component {
                     onCancel={onCancel}
 
                 />
+
             </div>
+            </body>
+
+
         );
     }
 }
