@@ -1,98 +1,43 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import scriptLoader from 'react-async-script-loader';
-import PropTypes from 'prop-types';
-import paypal from 'paypal-checkout';
+import './Shop.css'
+import PaypalExpressBtn from 'react-paypal-express-checkout';
 
-class PaypalButton extends React.Component {
+const CLIENT = {
+    sandbox: 'AWimmU_UUXh8faUJWKgLQ47PzwMS1stS7WmkfJpR2iKUl8SY1ax5tK2w1orGoeTGncepFlB3mKhjyqpS',
+    production: 'xxxxxxxxx',
+};
+
+class Shop extends React.Component {
     constructor(props) {
         super(props);
-        window.React = React;
-        window.ReactDOM = ReactDOM;
-        this.state = {
-            showButton: false,
-            env: 'sandbox', // Or 'production'
-            client: {
-                sandbox:    'AWimmU_UUXh8faUJWKgLQ47PzwMS1stS7WmkfJpR2iKUl8SY1ax5tK2w1orGoeTGncepFlB3mKhjyqpS', // sandbox client ID
-                production: 'xxxxxxxxx' // production client ID
-            },
-            commit: true, // Show a 'Pay Now' button
-        };
-    }
-    componentDidMount() {
-        const { isScriptLoaded, isScriptLoadSucceed } = this.props;
-        if (isScriptLoaded && isScriptLoadSucceed) {
-            this.setState({ showButton: true });
-        }
-    }
-    componentWillReceiveProps({ isScriptLoaded, isScriptLoadSucceed }) {
-        if (!this.state.show) {
-            if (isScriptLoaded && !this.props.isScriptLoaded) {
-                if (isScriptLoadSucceed) {
-                    this.setState({ showButton: true });
-                } else {
-                    console.log('Cannot load Paypal script!');
-                    this.props.onError();
-                }
-            }
-        }
     }
 
     render() {
-        const payment = () => paypal.rest.payment.create(this.props.env, this.props.client, {
-            transactions: [
-                { amount: { total: this.props.total, currency: this.props.currency } },
-            ],
-        });
+        const onSuccess = (payment) =>
+            console.log('Successful payment!', payment);
+        const onError = (error) =>
+            console.log('Erroneous payment OR failed to load script!', error);
+        const onCancel = (data) =>
+            console.log('Cancelled payment!', data);
 
-        const onAuthorize = (data, actions) => actions.payment.execute().then(() => {
-            const payment = Object.assign({}, this.props.payment);
-            payment.paid = true;
-            payment.cancelled = false;
-            payment.payerID = data.payerID;
-            payment.paymentID = data.paymentID;
-            payment.paymentToken = data.paymentToken;
-            payment.returnUrl = data.returnUrl;
-            this.props.onSuccess(payment);
-        });
+        let env = 'sandbox'; // you can set here to 'production' for production
+        let currency = 'USD'; // or you can set this value from your props or state
+        let total = 9.95; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
 
-        let ppbtn = '';
-        if (this.state.showButton) {
-            ppbtn = (<paypal.Button.react
-                env={this.state.env}
-                client={this.state.client}
-                payment={payment}
-                commit
-                onAuthorize={onAuthorize}
-                onCancel={this.props.onCancel}
-            />);
-        }
+        return (
+            <div className="button">
+                <PaypalExpressBtn
+                    env={env}
+                    client={CLIENT}
+                    currency={currency}
+                    total={total}
+                    onError={onError}
+                    onSuccess={onSuccess}
+                    onCancel={onCancel}
 
-        return(
-            <div>{ppbtn}</div>
-        )
+                />
+            </div>
+        );
     }
 }
-
-
-PaypalButton.propTypes = {
-    currency: PropTypes.string.isRequired,
-    total: PropTypes.number.isRequired,
-    client: PropTypes.object.isRequired,
-};
-
-PaypalButton.defaultProps = {
-    env: 'sandbox',
-    onSuccess: (payment) => {
-        console.log('The payment was succeeded!', payment);
-    },
-    onCancel: (data) => {
-        console.log('The payment was cancelled!', data);
-    },
-    onError: (err) => {
-        console.log('Error loading Paypal script!', err);
-    },
-};
-export default PaypalButton;
-
-
+export default Shop;
