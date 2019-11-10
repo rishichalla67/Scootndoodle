@@ -3,6 +3,12 @@
     padding-top: 300px;
 }
 
+.home{
+    display: flex;
+
+}
+
+
 .homeButton {
     display: inline-block;
     border-radius: 4px;
