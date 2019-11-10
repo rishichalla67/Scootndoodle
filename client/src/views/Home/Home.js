@@ -8,18 +8,19 @@ import ReviewSlider from '../../components/Reviews/ReviewSlider';
 import sliderData from '../../assets/reviews'
 import Footer from '../../components/Footer/Footer';
 import Navigation from '../../components/Navigation/Navigation';
-
+import Row from 'react-bootstrap/Row';
+import { MissionStatement } from '../../components/Mission/MissionStatement';
+//import Container from 'react-bootstrap/Container'
 
 export const Home = () => (
     <React.Fragment>
         <Navigation />
         <Video />
         <ReviewSlider data={sliderData}/>
+        <MissionStatement />
         <ShopPreview />
         <About />
-        <Media />
-        <Footer />
     </React.Fragment>
-);
+)
 
 // https://github.com/reactjs/react-modal
