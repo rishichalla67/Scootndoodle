@@ -1,0 +1,10 @@
+.success{
+    background: #a6d5ec;
+}
+
+.Greeting{
+    display: flex;
+    justify-content: center;
+    padding: 10vmax;
+}
+

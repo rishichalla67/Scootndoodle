@@ -1,10 +1,8 @@
 import React from 'react';
 import './Shop.css';
+import Navigation from "../../components/Navigation/Navigation";
 import PaypalExpressBtn from 'react-paypal-express-checkout';
-
-
-// const express = require('express');
-// const router = express.Router();
+import { Alert } from 'reactstrap';
 
 
 const CLIENT = {
@@ -13,10 +11,13 @@ const CLIENT = {
 };
 
 class Shop extends React.Component {
+
     render() {
+
         const onSuccess = (payment) => {
             console.log('Successful payment!', payment);
             alert('Transaction completed! Thank you for purchasing our product!');
+            this.props.history.push('/Shop/Success');
         };
         const onError = (error) =>
             console.log('Erroneous payment OR failed to load script!', error);
@@ -25,30 +26,30 @@ class Shop extends React.Component {
             alert('Payment Cancelled')
         };
 
-
-        let env = 'sandbox'; // you can set here to 'production' for production
-        let currency = 'USD'; // or you can set this value from your props or state
-        let total = 9.95; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+        let env = 'sandbox';
+        let currency = 'USD';
+        let total = 9.95;
 
         return (
+            <body>
+                <Navigation />
+                <h1 className={'view'}>Shop View</h1>
+                <div className="button">
 
+                    <a className='pay'>
+                        <PaypalExpressBtn
+                            env={env}
+                            client={CLIENT}
+                            currency={currency}
+                            total={total}
+                            onError={onError}
+                            onSuccess={onSuccess}
+                            onCancel={onCancel}
 
-            <div className="button">
-                <a className={'home'} href="http://localhost:3000/Home"><button className="homeButton"><span>Home </span></button></a>
-                <PaypalExpressBtn
-                    env={env}
-                    client={CLIENT}
-                    currency={currency}
-                    total={total}
-                    onError={onError}
-                    onSuccess={onSuccess}
-                    onCancel={onCancel}
-
-                />
-
-            </div>
-
-
+                        />
+                    </a>
+                </div>
+            </body>
         );
     }
 }

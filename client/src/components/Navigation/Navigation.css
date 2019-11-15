@@ -1,4 +1,5 @@
 .nav-container {
-    position: absolute;
-    background: transparent;
+    display: flex;
+    background: black;
+    color: black;
 }

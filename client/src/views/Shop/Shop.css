@@ -3,19 +3,30 @@
     padding-top: 300px;
 }
 
-.home{
+.view{
     display: flex;
+    justify-content: center;
+    padding: 30vh 30vh 10vh;
+    background: #a6d5ec;
+}
 
+.pay{
+    position: fixed;
+    bottom: 1%;
+    right: 45%;
+    display: flex;
 }
 
 
 .homeButton {
+    position: fixed;
+    left: 10px;
+    top: 10px;
     display: inline-block;
     border-radius: 4px;
     background-color: grey;
     border: none;
     color: #FFFFFF;
-    text-align: center;
     font-size: 18px;
     padding: 10px;
     width: 100px;
