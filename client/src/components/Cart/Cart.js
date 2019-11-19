@@ -1,9 +1,5 @@
 import React from 'react'
-import Footer from '../../components/Footer/Footer'
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import { Link } from 'react-router-dom';
 import './Cart.css'
 import PaypalExpressBtn from "react-paypal-express-checkout";
 
@@ -17,7 +13,7 @@ class Cart extends React.Component {
         const onSuccess = (payment) => {
             console.log('Successful payment!', payment);
             alert('Transaction completed! Thank you for purchasing our product!');
-            this.props.history.push('/Shop/Success');
+            this.props.history.push('/Success');
         };
         const onError = (error) =>
             console.log('Erroneous payment OR failed to load script!', error);
@@ -32,10 +28,10 @@ class Cart extends React.Component {
         return(
             <Container className = 'container'>
                 <div>
-                    <nav>
+                    <nav className='navBar'>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
-                            <li class="breadcrumb-item "><a href="/ShopPreview">Shop</a></li>
+                            <li class="breadcrumb-item"><a href={"/Home"}>Home</a></li>
+                            <li class="breadcrumb-item "><a href={"/ShopPreview"}>Shop</a></li>
                             <li class="breadcrumb-item active"><a href="#">Cart</a></li>
                         </ol>
                     </nav>
@@ -49,14 +45,14 @@ class Cart extends React.Component {
                         <tbody>
                         <tr>
 
-                            <td>Product</td>
-                            <td>Color</td>
-                            <td>Size</td>
-                            <td>Quantity</td>
-                            <td>Price</td>
+                            <th>Product</th>
+                            <th>Color</th>
+                            <th>Size</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
                         </tr>
                         <tr>
-                            <th scope="row">Hippo</th>
+                            <td scope="row">Hippo</td>
                             <td>Green</td>
                             <td>Medium</td>
                             <td>1</td>

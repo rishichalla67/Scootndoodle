@@ -52,3 +52,13 @@
     color: black;
     font-size: large;
 }
+
+.breadcrumb {
+
+    background-color: lightgrey;
+}
+
+.navBar {
+    padding-left: -20px;
+    padding-right: -20px;
+}
