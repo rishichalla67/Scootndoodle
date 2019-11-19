@@ -2,7 +2,7 @@ import React from 'react';
 import './Congrats.css';
 import Shop from "./Shop";
 import Navigation from "../../components/Navigation/Navigation";
-import bg from '../../assets/bgPic.JPG'
+//import bg from '../../assets/bgPic.JPG'
 
 const Congrats = () => {
     return (

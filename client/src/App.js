@@ -5,8 +5,10 @@ import  Shop  from './views/Shop/Shop'
 import Media   from "./components/Media/Media"
 import NotFound from "./views/NotFound"
 import Success from './views/Shop/Congrats'
+import ShopPreview from './components/ShopPreview/ShopPreview'
 import Footer from './components/Footer/Footer';
 import Container from 'react-bootstrap/Container'
+import Cart from "./components/Cart/Cart";
 
 import './App.css'
 
@@ -20,7 +22,8 @@ const App = () => {
             <Route exact path="/">
               <Redirect to="/Home" />
             </Route>
-            <Route exact path='/Shop' component={Shop} />
+            <Route exact path='/ShopPreview' component={ShopPreview} />
+            <Route exact path='/Cart' component={Cart} />
             <Route exact path='/Shop/Success' component={Success}/>
             <Route exact path="/Media" component={Media} />
             <Route component={NotFound}/>
