@@ -8,6 +8,7 @@ import ShopPreview from './components/ShopPreview/ShopPreview'
 import Cart from "./components/Cart/Cart";
 
 import './App.css'
+import Checkout from "./components/Cart/Checkout";
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
             <Route exact path='/ShopPreview' component={ShopPreview} />
             <Route exact path='/Cart' component={Cart} />
             <Route exact path='/Success' component={Success}/>
+            <Route exact path='/Checkout' component={Checkout}/>
             <Route exact path="/Media" component={Media} />
             <Route component={NotFound}/>
           </Switch>

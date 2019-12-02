@@ -5,12 +5,12 @@ import Col from 'react-bootstrap/Col'
 //import $ from 'jquery'
 //import { library } from '@fortawesome/fontawesome-svg-core'
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons' 
-import { SocialIcon } from 'react-social-icons'
+//import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
+// import  SocialIcon  from 'react-social-icons'
 import './index.css'
 import InstaGrid from './InstaGrid'
 
-//library.add(faFacebookSquare); 
+//library.add(faFacebookSquare);
 
 class Media extends React.Component {
     render() {
@@ -21,8 +21,8 @@ class Media extends React.Component {
                     <Col xs={12} md={6}>
                         <Row style={{marginLeft: 0, marginRight: 0}}>Contact Us</Row>
                         <Row style={{marginLeft: 0, marginRight: 0}}>
-                            <SocialIcon url='https://www.facebook.com/'/>
-                            <SocialIcon url='https://www.instagram.com/scootscribbledoodletest/'/>
+                            {/*<SocialIcon url='https://www.facebook.com/'/>*/}
+                            {/*<SocialIcon url='https://www.instagram.com/scootscribbledoodletest/'/>*/}
                         </Row>
                         <Row style={{marginLeft: 0, marginRight: 0}}>
                             Contact Form
