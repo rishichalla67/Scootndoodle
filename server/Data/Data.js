@@ -5,12 +5,10 @@ const Schema = mongoose.Schema;
 // this will be our data base's data structure
 const DataSchema = new Schema(
     {
-        paid: String,
-        cancelled: String,
-        payerID: String,
-        paymentID: String,
-        paymentToken: String,
-        returnUrl: String
+            number: Number,
+            name: String,
+            expiry: String,
+            cvc: Number
     },
     { timestamps: true }
 );
