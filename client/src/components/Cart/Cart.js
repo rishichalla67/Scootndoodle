@@ -1,20 +1,13 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
-//import { render } from 'react-dom'
-// import Cards from 'react-credit-cards';
 import './Cart.css'
-// import PaypalExpressBtn from "react-paypal-express-checkout";
 import { PayPalButton } from "react-paypal-button-v2";
-// import CreditCardInput from 'react-credit-card-input';
-import 'react-credit-cards/es/styles-compiled.css';
-// import { Link } from 'react-router-dom';
-// import axios from 'axios';
 
 // const CLIENT = {
 //     sandbox: 'AUm1Ey3myi5PKQFlWRUmJTzRrMN1KrD45lOLYoyAxdn-5A8cKaIr8XhzYkVx9C8QJFxsJNAqqJ0sRKXs',
 //     production: 'xxxxxxxxx',
 // };
-
+let total = 9.95;
 class Cart extends React.Component {
     render() {
 
@@ -56,11 +49,10 @@ class Cart extends React.Component {
                         </tbody>
                     </table>
                     <PayPalButton
-                        amount="9.95"
-                        // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+                        amount={total}
                         onSuccess={(details, data) => {
                             alert("Transaction completed by " + details.payer.name.given_name);
-                            //this.props.history.push('/Success');
+                            this.props.history.push('/Success');
                             // OPTIONAL: Call your server to save the transaction
                             return this.ppBtn.orderId = data.orderID;
                         }}
